@@ -52,13 +52,14 @@ Rather than measuring what executives say, this report measures what firms *do*.
 
 CEO stance score is a statistically significant predictor of observable China strategy outcomes (β = −1.46, p < 0.01): each one-point increase in cautious rhetoric is associated with a 77% reduction in the odds of expansion. US export controls are the only policy variable with significant predictive power (β = −3.88, p < 0.05). Financial variables (revenue, CapEx, ROE, leverage) show no significant association with strategic outcomes, suggesting that multinational China strategy in this period was shaped by regulatory feasibility and managerial framing rather than balance sheet characteristics.
 
-| Statistic | Value |
-|-----------|-------|
-| Firm-year observations | 99 |
-| Multinational firms | 9 |
-| Strategic events coded | 67 |
-| Panel variables | 30 |
-| Regression specifications | 4 |
+| Metric | Value |
+|--------|-------|
+| CEO stance β (ordered logit) | −1.46\*\*\* |
+| Export controls β | −3.88\*\* |
+| Pseudo R² (4 specifications) | 0.20–0.23 |
+| Outcome split (Expand / Maintain / Retreat) | 54% / 40% / 6% |
+| Kruskal-Wallis H (stance vs. outcome) | 11.89, p = 0.003 |
+| OLS robustness R² | 0.309 |
 
 ---
 
@@ -87,12 +88,14 @@ Using OLS fixed-effects regressions (`pyfixest.feols`) with HC1 standard errors 
 
 Threshold sensitivity analysis confirms τ = 20% as the preferred specification: the b-ratio is bounded at [0, 0.66] with median ≈ 0.12, thresholds above 40% yield very few Hybrid B observations. Seven robustness checks (alternative thresholds, propensity-score-matched controls, rank-composition controls, skill-type decomposition) confirm the premium. Model-free evidence shows Hybrid B firms exhibit higher and less dispersed ROA distributions, with strategy adoption growing monotonically from 2011 to 2019.
 
-| Statistic | Value |
-|-----------|-------|
-| Firm-year observations | 3,367 |
-| Unique firms | 432 |
-| Hiring strategies | 4 |
-| Robustness checks | 7 |
+| Metric | Value |
+|--------|-------|
+| Hybrid B ROA premium (τ = 20%) | +0.227\*\*\* |
+| Significance range (τ = 15%–20% only) | +0.134\*\*\*–0.227\*\*\* |
+| b-ratio in sample: range / median | [0, 0.66] / 0.12 |
+| Adj. R² (preferred specification) | 0.317 |
+| Trad. ML Hybrid B coefficient | +0.222\*\*\* (240 firm-years) |
+| PSM matched Hybrid B pairs | 62 of 62 |
 
 ### Week 5 — Causal Validation
 
@@ -100,11 +103,14 @@ Threshold sensitivity analysis confirms τ = 20% as the preferred specification:
 
 After conditioning on firm fixed effects, the Hybrid B coefficient falls to +0.030 (s.e. 0.049, p > 0.5) and remains statistically indistinguishable from zero across every alternative specification, matching design, staggered-DiD estimator, and performance measure tested. Thirteen robustness and causal validation tasks converge: the cross-sectional premium documented in Week 3–4 is best interpreted as a **between-firm selection effect**: firms that adopt Hybrid B differ on unobserved pre-adoption characteristics that also predict higher ROA, rather than a causal return to hybrid hiring.
 
-| Statistic | Value |
-|-----------|-------|
-| Firm-year observations | 4,217 |
-| Unique firms | 510 |
-| Robustness and causal validation tasks | 13 |
+| Metric | Value |
+|--------|-------|
+| Hybrid B β under firm FE | +0.030 (s.e. 0.049, p > 0.5) |
+| PSM avg. post-treatment effect (1:1) | −0.002 |
+| Persistent adopters avg. post-ROA (N = 39) | −0.174 |
+| Sun–Abraham / Callaway–Sant'Anna DiD | −0.090 / −0.050 |
+| Cross-sectional premium (industry+year FE) | +0.219–0.227\*\*\* |
+| Shift-share IV first-stage F | < 1 (weak instrument) |
 
 ### Week 6 — Main Specification
 
@@ -155,7 +161,5 @@ These reports were prepared as part of a predoctoral research assistantship at t
 **Author:** Shreyas Urgunde · [shreyasxi.github.io](https://shreyasxi.github.io) · shreyas.urgunde@warwick.ac.uk
 
 ---
-
-*Generative AI was used for Python and LaTeX code generation across all reports. All data collection, variable construction, analytical interpretations, and written conclusions reflect the author's independent judgement.*
 
 > **Note:** The underlying code and proprietary datasets used in this research are the intellectual property of the Human Algorithm Interaction (HAI) Lab, University of Oxford, and are not available for public distribution.
